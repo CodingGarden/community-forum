@@ -6,7 +6,7 @@
       <hr class="my-4">
       <p>This forum is all about community. Be kind! Be helpful! 🌈</p>
       <p class="lead">
-        <a class="btn btn-primary btn-lg" href="#" role="button">Sign Up</a>
+        <a class="btn btn-primary btn-lg" :href="getLoginURL" role="button">Login with Google</a>
       </p>
     </div>
   </div>
@@ -15,5 +15,14 @@
 <script>
 export default {
   name: 'home',
+  computed: {
+    getLoginURL() {
+      if (window.location.hostname === 'localhost') {
+        return 'http://localhost:3000/auth/google';
+      } else {
+        return 'https://community-forum-api.now.sh/auth/google';
+      }
+    }
+  }
 };
 </script>
