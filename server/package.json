@@ -12,6 +12,7 @@
     "dotenv": "^6.0.0",
     "express": "~4.16.0",
     "joi": "^13.3.0",
+    "jsonwebtoken": "^8.2.2",
     "knex": "^0.14.6",
     "morgan": "~1.9.0",
     "nodemon": "^1.17.5",
