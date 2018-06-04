@@ -1,5 +1,7 @@
 const jwt = require('jsonwebtoken');
 
+const users = require('../queries/users');
+
 function create(user) {
   console.log('sigining with secret', process.env.TOKEN_SECRET);
   
