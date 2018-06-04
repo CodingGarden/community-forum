@@ -15,9 +15,11 @@
     "jsonwebtoken": "^8.2.2",
     "knex": "^0.14.6",
     "morgan": "~1.9.0",
-    "nodemon": "^1.17.5",
     "passport": "^0.4.0",
     "passport-google-oauth20": "^1.0.0",
     "pg": "^7.4.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.5"
   }
 }
