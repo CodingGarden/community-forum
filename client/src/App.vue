@@ -15,8 +15,9 @@ export default {
   },
   mounted() {
     this.login(localStorage.token);
+    this.loadCategories();
   },
-  methods: mapActions(['login']),
+  methods: mapActions(['login', 'loadCategories']),
 };
 </script>
 

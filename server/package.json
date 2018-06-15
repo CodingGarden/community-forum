@@ -4,10 +4,12 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "nodemon ./bin/www"
+    "dev": "nodemon ./bin/www",
+    "deploy": "now -e GOOGLE_CLIENT_ID=@cm_google_client -e GOOGLE_CLIENT_SECRET=@cm_google_secret -e TOKEN_SECRET=@cm_token_secret -e CLIENT_REDIRECT=@cm_client_redirect -e CLIENT_ERROR_REDIRECT=@cm_client_error -e DATABASE_URL=@cm_client_db -e NODE_ENV=production"
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",
+    "cors": "^2.8.4",
     "debug": "~2.6.9",
     "dotenv": "^6.0.0",
     "express": "~4.16.0",

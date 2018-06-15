@@ -33,7 +33,7 @@ async function checkAuthHeaderSetUserUnAuthorized(req, res, next) {
 
 function isAdmin(req, res, next) {
   if (req.user && req.user.role_id === 3) {
-     next();
+     return next();
   }
   res.status(401);
   next(new Error('Un-Authorized'));

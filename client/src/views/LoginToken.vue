@@ -3,6 +3,7 @@
 </template>
 <script>
 import { mapActions } from 'vuex';
+
 export default {
   mounted() {
     const { token } = this.$route.params;

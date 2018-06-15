@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
-import { isAdmin } from './API';
+import { getAllCategories, createCategory } from './API';
 
 Vue.use(Vuex);
 
@@ -9,6 +9,7 @@ export default new Vuex.Store({
   state: {
     token: '',
     user: null,
+    categories: [],
   },
   mutations: {
     setToken(state, token) {
@@ -17,10 +18,16 @@ export default new Vuex.Store({
     setUser(state, user) {
       state.user = user;
     },
+    setCategories(state, categories) {
+      state.categories = categories;
+    },
+    pushCategory(state, category) {
+      state.categories.push(category);
+    },
   },
   getters: {
     isLoggedIn(state) {
-      return state.user ? true : false;
+      return !!state.user;
     },
   },
   actions: {
@@ -37,8 +44,16 @@ export default new Vuex.Store({
         commit('setUser', null);
       }
     },
-    isAdmin({ commit, state }) {
+    isAdmin({ state }) {
       return state.user.role_id === 3;
+    },
+    async loadCategories({ commit }) {
+      const categories = await getAllCategories();
+      commit('setCategories', categories);
+    },
+    async addCategory({ commit }, newCategory) {
+      const category = await createCategory(newCategory);
+      commit('pushCategory', category);
     },
   },
 });
