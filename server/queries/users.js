@@ -1,6 +1,8 @@
 const Joi = require('joi');
 const db = require('../db');
 
+const { insertIntoTableAndValidate } = require('./index');
+
 const schema = Joi.object().keys({
   display_name: Joi.string().required(),
   email: Joi.string().email(),
@@ -24,13 +26,7 @@ module.exports = {
     const rows = await db('users').where('id', id).update(user, '*');
     return rows[0];
   },
-  async insert(user) {
-    const result = Joi.validate(user, schema);
-    if (result.error === null) {
-      const rows = await db('users').insert(user, '*');
-      return rows[0];
-    } else {
-      return Promise.reject(result.error);
-    }
+  insert(user) {
+    return insertIntoTableAndValidate('users', user, schema);
   }
 };

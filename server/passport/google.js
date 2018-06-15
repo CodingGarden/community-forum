@@ -30,7 +30,7 @@ passport.use(new GoogleStrategy({
       const admins = await users.findAdmins();
       if (admins.length === 0) {
         googleUser.role_id = 3;
-      }      
+      }
       user = await users.insert(googleUser);
     }    
 

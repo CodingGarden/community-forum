@@ -31,6 +31,14 @@ async function checkAuthHeaderSetUserUnAuthorized(req, res, next) {
   next(new Error('Un-Authorized'));
 }
 
+function isAdmin(req, res, next) {
+  if (req.user && req.user.role_id === 3) {
+     next();
+  }
+  res.status(401);
+  next(new Error('Un-Authorized'));
+}
+
 function notFound(req, res, next) {
   const error = new Error('Not Found - ' + req.originalUrl);
   res.status(404);
@@ -50,4 +58,5 @@ module.exports = {
   errorHandler,
   checkAuthHeaderSetUser,
   checkAuthHeaderSetUserUnAuthorized,
+  isAdmin,
 };
